@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Habit Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Execution OS</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>Habit Tracker</h1>
+<div class="app">
 
-    <div class="add-habit">
-      <input type="text" id="habitInput" placeholder="New Habit..." />
-      <button onclick="addHabit()">Add</button>
-    </div>
+  <nav class="tabs">
+    <button onclick="switchTab('dashboard')">Dashboard</button>
+    <button onclick="switchTab('tasks')">Tasks</button>
+    <button onclick="switchTab('habits')">Habits</button>
+    <button onclick="switchTab('goals')">Goals</button>
+    <button onclick="switchTab('categories')">Categories</button>
+  </nav>
 
-    <ul id="habitList"></ul>
-  </div>
+  <main id="content"></main>
 
-  <script src="app.js"></script>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
