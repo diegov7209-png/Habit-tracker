@@ -1,52 +1,71 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont;
-  background: #111;
+  background: #0f0f14;
   color: white;
 }
 
-.container {
-  max-width: 500px;
+.app {
+  max-width: 700px;
   margin: auto;
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
-}
-
-.add-habit {
-  display: flex;
-  gap: 10px;
-}
-
-input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-}
-
-button {
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: none;
-  background: #00c896;
-  color: white;
-  font-weight: bold;
-}
-
-li {
-  margin-top: 15px;
-  padding: 10px;
-  background: #222;
-  border-radius: 10px;
+.tabs {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
+.tabs button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 10px;
+  background: #1a1a22;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.tabs button:hover {
+  background: #2b2b38;
+}
+
+.card {
+  background: #1a1a22;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 128, 255, 0.2);
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background: #2b2b38;
+  border: none;
+  border-radius: 8px;
+  color: white;
+}
+
+button.primary {
+  background: linear-gradient(45deg, #0066ff, #8a2be2);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.priority-low { border-left: 4px solid #00ff99; }
+.priority-medium { border-left: 4px solid #ffd700; }
+.priority-high { border-left: 4px solid #ff8800; }
+.priority-critical { border-left: 4px solid #ff0033; }
+
 .completed {
-  text-decoration: line-through;
   opacity: 0.5;
+  text-decoration: line-through;
 }
