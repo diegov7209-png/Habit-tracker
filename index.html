@@ -1,29 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
 <title>Execution OS</title>
-
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <div class="app">
 
-  <nav class="tabs">
-    <button onclick="switchTab('dashboard')">Dashboard</button>
-    <button onclick="switchTab('tasks')">Tasks</button>
-    <button onclick="switchTab('habits')">Habits</button>
-    <button onclick="switchTab('goals')">Goals</button>
-    <button onclick="switchTab('categories')">Categories</button>
-  </nav>
+<header class="topbar">
+<h1>Execution OS</h1>
+</header>
 
-  <main id="content"></main>
+<nav class="sidebar">
+<button data-tab="dashboard">Dashboard</button>
+<button data-tab="tasks">Tasks</button>
+<button data-tab="habits">Habits</button>
+<button data-tab="goals">Goals</button>
+<button data-tab="categories">Categories</button>
+<button data-tab="reflection">Reflection</button>
+</nav>
+
+<main class="content">
+
+<section id="dashboard" class="tab active">
+<h2>Dashboard</h2>
+<div id="dashboard-cards"></div>
+<div id="ai-suggestions"></div>
+</section>
+
+<section id="tasks" class="tab">
+<h2>Tasks</h2>
+
+<div class="card">
+<input id="taskTitle" placeholder="Task title">
+<select id="taskCategory"></select>
+<select id="taskPriority">
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+</select>
+<input id="taskDeadline" type="date">
+<button id="addTask">Add Task</button>
+</div>
+
+<ul id="taskList"></ul>
+
+</section>
+
+<section id="habits" class="tab">
+
+<h2>Habits</h2>
+
+<div class="card">
+<input id="habitTitle" placeholder="Habit name">
+<select id="habitCategory"></select>
+<button id="addHabit">Add Habit</button>
+</div>
+
+<ul id="habitList"></ul>
+
+</section>
+
+<section id="goals" class="tab">
+
+<h2>Goals</h2>
+
+<div class="card">
+<input id="goalTitle" placeholder="Goal title">
+<textarea id="goalDesc" placeholder="Description"></textarea>
+<button id="addGoal">Add Goal</button>
+</div>
+
+<div id="goalList"></div>
+
+</section>
+
+<section id="categories" class="tab">
+
+<h2>Categories</h2>
+
+<div class="card">
+<input id="newCategory" placeholder="New category">
+<button id="addCategory">Add</button>
+</div>
+
+<ul id="categoryList"></ul>
+
+</section>
+
+<section id="reflection" class="tab">
+
+<h2>Daily Reflection</h2>
+
+<div class="card">
+
+<textarea id="reflectAccomplish" placeholder="What did you accomplish?"></textarea>
+
+<label>Energy</label>
+<input id="reflectEnergy" type="number" min="1" max="5">
+
+<label>Mood</label>
+<input id="reflectMood" type="number" min="1" max="5">
+
+<textarea id="reflectBlock" placeholder="What blocked progress?"></textarea>
+
+<button id="saveReflection">Save Reflection</button>
 
 </div>
 
+<div id="reflectionHistory"></div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="storage.js"></script>
+<script src="tasks.js"></script>
+<script src="habits.js"></script>
+<script src="goals.js"></script>
+<script src="ai.js"></script>
+<script src="dashboard.js"></script>
 <script src="app.js"></script>
+
 </body>
 </html>
