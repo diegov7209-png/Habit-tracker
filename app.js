@@ -1,9 +1,13 @@
-const App={
+const App = {
 
 init(){
 
 this.nav()
 this.initCategories()
+
+document.getElementById("menuToggle").onclick = () => {
+document.getElementById("sidebar").classList.toggle("collapsed")
+}
 
 Tasks.init()
 Habits.init()
@@ -11,8 +15,8 @@ Goals.init()
 
 Dashboard.render()
 
-document.getElementById("addCategory").onclick=this.addCategory
-document.getElementById("saveReflection").onclick=this.saveReflection
+document.getElementById("addCategory").onclick = this.addCategory
+document.getElementById("saveReflection").onclick = this.saveReflection
 
 this.renderCategories()
 this.renderReflections()
@@ -21,16 +25,15 @@ this.renderReflections()
 
 nav(){
 
-document.querySelectorAll(".sidebar button")
-.forEach(btn=>{
+document.querySelectorAll(".sidebar button").forEach(btn => {
 
-btn.onclick=()=>{
+btn.onclick = () => {
 
-document.querySelectorAll(".tab")
-.forEach(t=>t.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(t => {
+t.classList.remove("active")
+})
 
-document.getElementById(btn.dataset.tab)
-.classList.add("active")
+document.getElementById(btn.dataset.tab).classList.add("active")
 
 Dashboard.render()
 
@@ -57,36 +60,46 @@ Storage.set("categories",[
 
 addCategory(){
 
-const cats=Storage.get("categories")
+const cats = Storage.get("categories")
 
-cats.push(newCategory.value)
+const value = document.getElementById("newCategory").value
+
+if(!value) return
+
+cats.push(value)
 
 Storage.set("categories",cats)
 
 App.renderCategories()
 
+document.getElementById("newCategory").value = ""
+
 },
 
 renderCategories(){
 
-const cats=Storage.get("categories")
+const cats = Storage.get("categories")
 
-taskCategory.innerHTML=""
-habitCategory.innerHTML=""
+const taskCategory = document.getElementById("taskCategory")
+const habitCategory = document.getElementById("habitCategory")
 
-cats.forEach(c=>{
+taskCategory.innerHTML = ""
+habitCategory.innerHTML = ""
 
-taskCategory.innerHTML+=`<option>${c}</option>`
-habitCategory.innerHTML+=`<option>${c}</option>`
+cats.forEach(c => {
+
+taskCategory.innerHTML += `<option>${c}</option>`
+habitCategory.innerHTML += `<option>${c}</option>`
 
 })
 
-const list=document.getElementById("categoryList")
-list.innerHTML=""
+const list = document.getElementById("categoryList")
 
-cats.forEach(c=>{
+list.innerHTML = ""
 
-list.innerHTML+=`<li>${c}</li>`
+cats.forEach(c => {
+
+list.innerHTML += `<li>${c}</li>`
 
 })
 
@@ -94,15 +107,15 @@ list.innerHTML+=`<li>${c}</li>`
 
 saveReflection(){
 
-const reflections=Storage.get("reflections")
+const reflections = Storage.get("reflections")
 
 reflections.push({
 
 date:new Date().toLocaleDateString(),
-accomplish:reflectAccomplish.value,
-energy:reflectEnergy.value,
-mood:reflectMood.value,
-block:reflectBlock.value
+accomplish:document.getElementById("reflectAccomplish").value,
+energy:document.getElementById("reflectEnergy").value,
+mood:document.getElementById("reflectMood").value,
+block:document.getElementById("reflectBlock").value
 
 })
 
@@ -110,18 +123,24 @@ Storage.set("reflections",reflections)
 
 App.renderReflections()
 
+document.getElementById("reflectAccomplish").value=""
+document.getElementById("reflectEnergy").value=""
+document.getElementById("reflectMood").value=""
+document.getElementById("reflectBlock").value=""
+
 },
 
 renderReflections(){
 
-const list=document.getElementById("reflectionHistory")
-list.innerHTML=""
+const list = document.getElementById("reflectionHistory")
 
-const r=Storage.get("reflections")
+list.innerHTML = ""
 
-r.forEach(e=>{
+const r = Storage.get("reflections")
 
-list.innerHTML+=`
+r.forEach(e => {
+
+list.innerHTML += `
 
 <div class="card">
 
@@ -140,4 +159,7 @@ list.innerHTML+=`
 }
 
 }
-window.addEventListener("load", () => App.init());
+
+document.addEventListener("DOMContentLoaded", () => {
+App.init()
+})
