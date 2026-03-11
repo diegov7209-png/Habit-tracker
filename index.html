@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>Execution OS</title>
+<title>Villasistente</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,39 +13,53 @@
 <div class="app">
 
 <header class="topbar">
-<h1>Execution OS</h1>
+<button id="menuToggle" class="menu-btn">☰</button>
+<h1>Villasistente</h1>
 </header>
 
-<nav class="sidebar">
+<nav class="sidebar" id="sidebar">
+
 <button data-tab="dashboard">Dashboard</button>
 <button data-tab="tasks">Tasks</button>
 <button data-tab="habits">Habits</button>
 <button data-tab="goals">Goals</button>
 <button data-tab="categories">Categories</button>
 <button data-tab="reflection">Reflection</button>
+
 </nav>
 
 <main class="content">
 
 <section id="dashboard" class="tab active">
 <h2>Dashboard</h2>
+
 <div id="dashboard-cards"></div>
+
+<h3>AI Assistant</h3>
 <div id="ai-suggestions"></div>
+
 </section>
 
 <section id="tasks" class="tab">
+
 <h2>Tasks</h2>
 
 <div class="card">
+
 <input id="taskTitle" placeholder="Task title">
+
 <select id="taskCategory"></select>
+
 <select id="taskPriority">
 <option>Low</option>
 <option>Medium</option>
 <option>High</option>
 </select>
+
 <input id="taskDeadline" type="date">
+
 <button id="addTask">Add Task</button>
+
 </div>
 
 <ul id="taskList"></ul>
@@ -56,9 +71,13 @@
 <h2>Habits</h2>
 
 <div class="card">
+
 <input id="habitTitle" placeholder="Habit name">
+
 <select id="habitCategory"></select>
+
 <button id="addHabit">Add Habit</button>
+
 </div>
 
 <ul id="habitList"></ul>
@@ -70,9 +89,13 @@
 <h2>Goals</h2>
 
 <div class="card">
+
 <input id="goalTitle" placeholder="Goal title">
+
 <textarea id="goalDesc" placeholder="Description"></textarea>
+
 <button id="addGoal">Add Goal</button>
+
 </div>
 
 <div id="goalList"></div>
@@ -84,8 +107,11 @@
 <h2>Categories</h2>
 
 <div class="card">
+
 <input id="newCategory" placeholder="New category">
+
 <button id="addCategory">Add</button>
+
 </div>
 
 <ul id="categoryList"></ul>
