@@ -140,5 +140,4 @@ list.innerHTML+=`
 }
 
 }
-
-window.onload=App.init
+window.addEventListener("load", () => App.init());
