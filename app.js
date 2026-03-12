@@ -1,9 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-/* SIDEBAR NAVIGATION */
+/* GOOGLE LOGIN */
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+document.getElementById("googleLogin").onclick = () => {
+
+auth.signInWithPopup(provider);
+
+};
+
+/* AUTH STATE */
+
+auth.onAuthStateChanged(user => {
+
+if(user){
+
+currentUser = user;
+
+document.getElementById("loginScreen").style.display = "none";
+document.getElementById("app").style.display = "block";
+
+loadUserData();
+
+}else{
+
+document.getElementById("loginScreen").style.display = "flex";
+document.getElementById("app").style.display = "none";
+
+}
+
+});
+
+/* LOGOUT */
+
+document.getElementById("logoutBtn").onclick = () => {
+
+auth.signOut();
+
+};
+
+/* SIDEBAR NAV */
 
 const pages = document.querySelectorAll(".page");
-const navButtons = document.querySelectorAll(".sidebar button");
+const navButtons = document.querySelectorAll(".sidebar button[data-page]");
 
 navButtons.forEach(btn => {
 
@@ -11,35 +51,42 @@ btn.onclick = () => {
 
 pages.forEach(p => p.classList.remove("active"));
 
-const target = document.getElementById(btn.dataset.page);
-
-if(target){
-target.classList.add("active");
-}
+document.getElementById(btn.dataset.page).classList.add("active");
 
 };
 
 });
 
-/* SIDEBAR COLLAPSE */
+});
 
-const sidebar = document.getElementById("sidebar");
-const toggle = document.getElementById("toggleSidebar");
+/* LOAD USER DATA */
 
-if(toggle){
+async function loadUserData(){
 
-toggle.onclick = () => {
+const doc = await db.collection("users").doc(currentUser.uid).get();
 
-sidebar.classList.toggle("collapsed");
+if(!doc.exists){
 
-};
+await db.collection("users").doc(currentUser.uid).set({
+
+tasks:[],
+habits:[],
+goals:[],
+categories:[],
+reflections:[]
+
+});
 
 }
 
-/* LOAD DASHBOARD */
+const data = (await db.collection("users").doc(currentUser.uid).get()).data();
 
-if(typeof Dashboard !== "undefined"){
+localStorage.setItem("tasks",JSON.stringify(data.tasks));
+localStorage.setItem("habits",JSON.stringify(data.habits));
+localStorage.setItem("goals",JSON.stringify(data.goals));
+localStorage.setItem("categories",JSON.stringify(data.categories));
+localStorage.setItem("reflections",JSON.stringify(data.reflections));
+
 Dashboard.render();
-}
 
-});
+}
