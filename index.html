@@ -4,163 +4,188 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Villasistente</title>
+<title>Villasistent</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="styles.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="app">
-
-<nav class="sidebar" id="sidebar">
-
-<button data-tab="dashboard"><span>🏠</span>Dashboard</button>
-<button data-tab="tasks"><span>📋</span>Tasks</button>
-<button data-tab="habits"><span>🔥</span>Habits</button>
-<button data-tab="goals"><span>🎯</span>Goals</button>
-<button data-tab="categories"><span>📁</span>Categories</button>
-<button data-tab="reflection"><span>🧠</span>Reflection</button>
-
-</nav>
+<div class="app-container">
 
 <header class="topbar">
 
-<button id="menuToggle" class="menu-btn">☰</button>
+<div class="greeting">
+<h1>Good morning</h1>
+<h2>Villasistent</h2>
+</div>
 
-<h1>Villasistente</h1>
+<div class="avatar"></div>
 
 </header>
 
-<main class="content">
+<main class="main-content">
 
-<section id="dashboard" class="tab active">
+<section id="dashboard" class="screen active">
 
-<h2 class="section-title">Dashboard</h2>
+<div class="card progress-card">
 
-<div id="dashboard-cards"></div>
+<div class="progress-circle">
 
-<div id="ai-suggestions"></div>
-
-</section>
-
-<section id="tasks" class="tab">
-
-<h2 class="section-title">Tasks</h2>
-
-<div class="card">
-
-<input id="taskTitle" placeholder="Task title">
-
-<select id="taskCategory"></select>
-
-<select id="taskPriority">
-<option>Low</option>
-<option>Medium</option>
-<option>High</option>
-</select>
-
-<input id="taskDeadline" type="date">
-
-<button id="addTask">Add Task</button>
+<div class="progress-value">76%</div>
 
 </div>
 
-<ul id="taskList"></ul>
+<div class="progress-stats">
 
-</section>
+<div>
+<h3>4</h3>
+<p>Tasks Done</p>
+</div>
 
-<section id="habits" class="tab">
+<div>
+<h3>12</h3>
+<p>Day Streak</p>
+</div>
 
-<h2 class="section-title">Habits</h2>
-
-<div class="card">
-
-<input id="habitTitle" placeholder="Habit name">
-
-<select id="habitCategory"></select>
-
-<button id="addHabit">Add Habit</button>
+<div>
+<h3>2</h3>
+<p>Goals</p>
+</div>
 
 </div>
 
-<ul id="habitList"></ul>
+</div>
+
+<div class="card ai-card">
+
+<h3>Villasistent AI</h3>
+
+<p>Focus on deep work for the next 2 hours to boost productivity.</p>
+
+</div>
+
+<div class="today-grid">
+
+<div class="card small-card">
+<h4>Tasks</h4>
+<span>8</span>
+</div>
+
+<div class="card small-card">
+<h4>Habits</h4>
+<span>5</span>
+</div>
+
+</div>
 
 </section>
 
-<section id="goals" class="tab">
+<section id="tasks" class="screen">
 
-<h2 class="section-title">Goals</h2>
+<h2>Tasks</h2>
 
-<div class="card">
+<div class="tabs">
+<div class="tab active">Today</div>
+<div class="tab">Upcoming</div>
+<div class="tab">Completed</div>
+</div>
 
-<input id="goalTitle" placeholder="Goal title">
+<div id="taskList"></div>
 
-<textarea id="goalDesc" placeholder="Description"></textarea>
+<button class="gradient-btn">+ Add Task</button>
 
-<button id="addGoal">Add Goal</button>
+</section>
+
+<section id="habits" class="screen">
+
+<h2>Habits</h2>
+
+<div class="streak">🔥 12 day streak</div>
+
+<div class="habit-week">
+
+<div class="day active"></div>
+<div class="day active"></div>
+<div class="day active"></div>
+<div class="day"></div>
+<div class="day"></div>
+<div class="day"></div>
+<div class="day"></div>
 
 </div>
+
+<div id="habitList"></div>
+
+</section>
+
+<section id="goals" class="screen">
+
+<h2>Goals</h2>
 
 <div id="goalList"></div>
 
 </section>
 
-<section id="categories" class="tab">
+<section id="categories" class="screen">
 
-<h2 class="section-title">Categories</h2>
+<h2>Categories</h2>
 
-<div class="card">
+<div class="category-grid">
 
-<input id="newCategory" placeholder="New category">
-
-<button id="addCategory">Add</button>
+<div class="card">Work</div>
+<div class="card">Health</div>
+<div class="card">Personal</div>
+<div class="card">Learning</div>
 
 </div>
-
-<ul id="categoryList"></ul>
 
 </section>
 
-<section id="reflection" class="tab">
+<section id="reflection" class="screen">
 
-<h2 class="section-title">Daily Reflection</h2>
+<h2>Reflection</h2>
 
-<div class="card">
+<div class="mood-row">
 
-<textarea id="reflectAccomplish" placeholder="What did you accomplish?"></textarea>
-
-<label>Energy</label>
-<input id="reflectEnergy" type="number" min="1" max="5">
-
-<label>Mood</label>
-<input id="reflectMood" type="number" min="1" max="5">
-
-<textarea id="reflectBlock" placeholder="What blocked progress?"></textarea>
-
-<button id="saveReflection">Save Reflection</button>
+<div class="mood">🙂</div>
+<div class="mood">😐</div>
+<div class="mood">😔</div>
+<div class="mood">😡</div>
 
 </div>
 
-<div id="reflectionHistory"></div>
+<textarea placeholder="Write your thoughts..."></textarea>
+
+<button class="gradient-btn">Submit</button>
 
 </section>
 
 </main>
 
+<nav class="bottom-nav">
+
+<button data-tab="dashboard">🏠</button>
+<button data-tab="tasks">📋</button>
+<button data-tab="habits">🔥</button>
+<button data-tab="goals">🎯</button>
+<button data-tab="reflection">🧠</button>
+
+</nav>
+
 </div>
 
-<script src="./storage.js"></script>
-<script src="./tasks.js"></script>
-<script src="./habits.js"></script>
-<script src="./goals.js"></script>
-<script src="./ai.js"></script>
-<script src="./dashboard.js"></script>
-<script src="./app.js"></script>
+<script src="storage.js"></script>
+<script src="tasks.js"></script>
+<script src="habits.js"></script>
+<script src="goals.js"></script>
+<script src="ai.js"></script>
+<script src="dashboard.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
