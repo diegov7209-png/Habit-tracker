@@ -1,85 +1,89 @@
-const Tasks = {
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-init(){
+const taskInput = document.getElementById("taskInput");
+const addTaskBtn = document.getElementById("addTask");
+const taskList = document.getElementById("taskList");
 
-document.getElementById("addTask").onclick=this.addTask
-this.render()
+function renderTasks(){
 
-},
+if(!taskList) return;
 
-addTask(){
+taskList.innerHTML = "";
 
-const tasks=Storage.get("tasks")
+tasks.forEach((task,index)=>{
+
+const li = document.createElement("li");
+
+li.className = "task-row";
+
+li.innerHTML = `
+<input type="checkbox" ${task.done ? "checked" : ""} data-index="${index}">
+<span class="${task.done ? "completed":""}">${task.text}</span>
+<button class="delete-btn" data-delete="${index}">✕</button>
+`;
+
+taskList.appendChild(li);
+
+});
+
+localStorage.setItem("tasks", JSON.stringify(tasks));
+
+if(typeof Dashboard !== "undefined"){
+Dashboard.render();
+}
+
+}
+
+/* ADD TASK */
+
+if(addTaskBtn){
+
+addTaskBtn.onclick = () => {
+
+const text = taskInput.value.trim();
+
+if(!text) return;
 
 tasks.push({
+text,
+done:false
+});
 
-id:Date.now(),
-title:taskTitle.value,
-category:taskCategory.value,
-priority:taskPriority.value,
-deadline:taskDeadline.value,
-completed:false
+taskInput.value = "";
 
-})
+renderTasks();
 
-Storage.set("tasks",tasks)
-
-Tasks.render()
-
-},
-
-toggle(id){
-
-const tasks=Storage.get("tasks")
-
-tasks.forEach(t=>{
-if(t.id==id)t.completed=!t.completed
-})
-
-Storage.set("tasks",tasks)
-
-Tasks.render()
-
-},
-
-delete(id){
-
-let tasks=Storage.get("tasks")
-
-tasks=tasks.filter(t=>t.id!=id)
-
-Storage.set("tasks",tasks)
-
-Tasks.render()
-
-},
-
-render(){
-
-const list=document.getElementById("taskList")
-list.innerHTML=""
-
-const tasks=Storage.get("tasks")
-
-tasks.forEach(t=>{
-
-const li=document.createElement("li")
-
-li.innerHTML=`
-<b>${t.title}</b>
-<br>
-${t.category} | ${t.priority} | ${t.deadline}
-<br>
-<button onclick="Tasks.toggle(${t.id})">
-${t.completed?"Undo":"Complete"}
-</button>
-<button onclick="Tasks.delete(${t.id})">Delete</button>
-`
-
-list.appendChild(li)
-
-})
+};
 
 }
 
+/* TASK CLICK EVENTS */
+
+if(taskList){
+
+taskList.onclick = (e) => {
+
+const checkbox = e.target.dataset.index;
+const deleteBtn = e.target.dataset.delete;
+
+if(checkbox !== undefined){
+
+tasks[checkbox].done = !tasks[checkbox].done;
+
+renderTasks();
+
 }
+
+if(deleteBtn !== undefined){
+
+tasks.splice(deleteBtn,1);
+
+renderTasks();
+
+}
+
+};
+
+}
+
+renderTasks();
