@@ -52,9 +52,7 @@ Villasistent
 <div class="card progress-card">
 
 <div class="circle">
-
 <div class="percent">0%</div>
-
 </div>
 
 </div>
@@ -62,31 +60,23 @@ Villasistent
 <div class="card stats">
 
 <div class="stat">
-
 <h2 id="totalTasks">0</h2>
 <p>Total Tasks</p>
-
 </div>
 
 <div class="stat">
-
 <h2 id="completedTasks">0</h2>
 <p>Completed</p>
-
 </div>
 
 <div class="stat">
-
 <h2 id="activeHabits">0</h2>
 <p>Habits</p>
-
 </div>
 
 <div class="stat">
-
 <h2 id="goalCount">0</h2>
 <p>Goals</p>
-
 </div>
 
 </div>
@@ -96,7 +86,6 @@ Villasistent
 <div class="card ai-card">
 
 <h3>AI Suggestion</h3>
-
 <p id="aiSuggestion">
 Focus on deep work for 2 hours.
 </p>
@@ -105,6 +94,7 @@ Focus on deep work for 2 hours.
 
 </section>
 
+
 <!-- TASKS -->
 
 <section id="tasksPage" class="page">
@@ -112,10 +102,68 @@ Focus on deep work for 2 hours.
 <h2>Tasks</h2>
 
 <input id="taskInput" placeholder="New task">
-
 <button id="addTask">Add Task</button>
 
 <ul id="taskList"></ul>
+
+</section>
+
+
+<!-- HABITS -->
+
+<section id="habitsPage" class="page">
+
+<h2>Habits</h2>
+
+<input id="habitInput" placeholder="New habit">
+<button id="addHabit">Add Habit</button>
+
+<ul id="habitList"></ul>
+
+</section>
+
+
+<!-- GOALS -->
+
+<section id="goalsPage" class="page">
+
+<h2>Goals</h2>
+
+<input id="goalInput" placeholder="New goal">
+<button id="addGoal">Add Goal</button>
+
+<ul id="goalList"></ul>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section id="categoriesPage" class="page">
+
+<h2>Categories</h2>
+
+<input id="categoryInput" placeholder="New category">
+<button id="addCategory">Add</button>
+
+<ul id="categoryList"></ul>
+
+</section>
+
+
+<!-- REFLECTION -->
+
+<section id="reflectionPage" class="page">
+
+<h2>Reflection</h2>
+
+<textarea id="reflectionText" placeholder="Write your thoughts..."></textarea>
+
+<button id="saveReflection">
+Save Reflection
+</button>
+
+<ul id="reflectionHistory"></ul>
 
 </section>
 
@@ -126,6 +174,10 @@ Focus on deep work for 2 hours.
 </div>
 
 <script src="tasks.js"></script>
+<script src="habits.js"></script>
+<script src="goals.js"></script>
+<script src="categories.js"></script>
+<script src="reflection.js"></script>
 <script src="dashboard.js"></script>
 <script src="app.js"></script>
 
