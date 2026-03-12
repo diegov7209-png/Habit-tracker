@@ -5,43 +5,53 @@
 <meta charset="UTF-8">
 <title>Villasistente</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <div class="app">
 
-<header class="topbar">
-<button id="menuToggle" class="menu-btn">☰</button>
-<h1>Villasistente</h1>
-</header>
-
 <nav class="sidebar" id="sidebar">
-<button data-tab="dashboard"><span>🏠</span> Dashboard</button>
-<button data-tab="tasks"><span>📋</span> Tasks</button>
-<button data-tab="habits"><span>🔥</span> Habits</button>
-<button data-tab="goals"><span>🎯</span> Goals</button>
-<button data-tab="categories"><span>📁</span> Categories</button>
-<button data-tab="reflection"><span>🧠</span> Reflection</button>
+
+<button data-tab="dashboard"><span>🏠</span>Dashboard</button>
+<button data-tab="tasks"><span>📋</span>Tasks</button>
+<button data-tab="habits"><span>🔥</span>Habits</button>
+<button data-tab="goals"><span>🎯</span>Goals</button>
+<button data-tab="categories"><span>📁</span>Categories</button>
+<button data-tab="reflection"><span>🧠</span>Reflection</button>
 
 </nav>
+
+<header class="topbar">
+
+<button id="menuToggle" class="menu-btn">☰</button>
+
+<h1>Villasistente</h1>
+
+</header>
 
 <main class="content">
 
 <section id="dashboard" class="tab active">
-<h2>Dashboard</h2>
+
+<h2 class="section-title">Dashboard</h2>
 
 <div id="dashboard-cards"></div>
 
-<h3>AI Assistant</h3>
+<h2 class="section-title">AI Assistant</h2>
+
 <div id="ai-suggestions"></div>
 
 </section>
 
 <section id="tasks" class="tab">
 
-<h2>Tasks</h2>
+<h2 class="section-title">Tasks</h2>
 
 <div class="card">
 
@@ -67,7 +77,7 @@
 
 <section id="habits" class="tab">
 
-<h2>Habits</h2>
+<h2 class="section-title">Habits</h2>
 
 <div class="card">
 
@@ -85,7 +95,7 @@
 
 <section id="goals" class="tab">
 
-<h2>Goals</h2>
+<h2 class="section-title">Goals</h2>
 
 <div class="card">
 
@@ -103,7 +113,7 @@
 
 <section id="categories" class="tab">
 
-<h2>Categories</h2>
+<h2 class="section-title">Categories</h2>
 
 <div class="card">
 
@@ -119,7 +129,7 @@
 
 <section id="reflection" class="tab">
 
-<h2>Daily Reflection</h2>
+<h2 class="section-title">Daily Reflection</h2>
 
 <div class="card">
 
