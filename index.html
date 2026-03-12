@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Villasistent</title>
 
 <link rel="stylesheet" href="styles.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
@@ -39,55 +39,26 @@ Villasistent
 
 </aside>
 
+<!-- MAIN -->
 
-<!-- MAIN CONTENT -->
-
-<div class="content">
+<div class="main">
 
 <header class="topbar">
 
-<button id="menuToggle" class="menu-btn">☰</button>
-
-<h1 class="title">Villasistent</h1>
+<button id="toggleSidebar">☰</button>
+<h1>Villasistent</h1>
 
 </header>
 
-
-<main class="pages">
-
-<!-- DASHBOARD -->
+<main>
 
 <section id="dashboardPage" class="page active">
 
-<h2>Dashboard</h2>
+<div class="card progress-card">
 
-<div class="dashboard-grid">
+<div class="circle">
 
-<div class="card">
-
-<h3 id="totalTasks">0</h3>
-<p>Total Tasks</p>
-
-</div>
-
-<div class="card">
-
-<h3 id="completedTasks">0</h3>
-<p>Completed</p>
-
-</div>
-
-<div class="card">
-
-<h3 id="activeHabits">0</h3>
-<p>Active Habits</p>
-
-</div>
-
-<div class="card">
-
-<h3 id="goalCount">0</h3>
-<p>Goals</p>
+<div class="percent">76%</div>
 
 </div>
 
@@ -95,16 +66,13 @@ Villasistent
 
 <div class="card ai-card">
 
-<h3>Villasistent AI</h3>
+<h3>AI Suggestion</h3>
 
-<p id="aiSuggestion">Everything looks balanced. Keep executing.</p>
+<p>Focus on deep work for 2 hours.</p>
 
 </div>
 
 </section>
-
-
-<!-- TASKS -->
 
 <section id="tasksPage" class="page">
 
@@ -112,29 +80,23 @@ Villasistent
 
 <div class="tabs">
 
-<button class="tab active">Today</button>
-<button class="tab">Upcoming</button>
-<button class="tab">Completed</button>
+<button class="tab active" data-filter="today">Today</button>
+<button class="tab" data-filter="upcoming">Upcoming</button>
+<button class="tab" data-filter="completed">Completed</button>
 
 </div>
 
-<div class="card task-create">
+<div class="task-input">
 
-<input id="taskTitle" placeholder="Task title">
+<input id="taskInput" placeholder="New task">
 
 <select id="taskPriority">
-
-<option>Low</option>
-<option>Medium</option>
-<option>High</option>
-
+<option value="low">Low</option>
+<option value="medium">Medium</option>
+<option value="high">High</option>
 </select>
 
-<input id="taskDeadline" type="date">
-
-<button id="addTask" class="gradient-btn">
-Add Task
-</button>
+<button id="addTask">Add Task</button>
 
 </div>
 
@@ -142,88 +104,50 @@ Add Task
 
 </section>
 
-
-<!-- HABITS -->
-
 <section id="habitsPage" class="page">
 
 <h2>Habits</h2>
 
-<div class="card habit-create">
+<input id="habitInput" placeholder="New habit">
 
-<input id="habitTitle" placeholder="Habit name">
-
-<button id="addHabit" class="gradient-btn">
-Add Habit
-</button>
-
-</div>
+<button id="addHabit">Add Habit</button>
 
 <ul id="habitList"></ul>
 
 </section>
 
-
-<!-- GOALS -->
-
 <section id="goalsPage" class="page">
 
 <h2>Goals</h2>
-
-<div class="card goal-create">
-
-<input id="goalTitle" placeholder="Goal title">
-
-<textarea id="goalDesc" placeholder="Description"></textarea>
-
-<button id="addGoal" class="gradient-btn">
-Add Goal
-</button>
-
-</div>
 
 <div id="goalList"></div>
 
 </section>
 
-
-<!-- CATEGORIES -->
-
 <section id="categoriesPage" class="page">
 
 <h2>Categories</h2>
 
-<div class="card">
+<div class="category-grid">
 
-<input id="newCategory" placeholder="New category">
-
-<button id="addCategory" class="gradient-btn">
-Add
-</button>
+<div class="card">Work</div>
+<div class="card">Health</div>
+<div class="card">Personal</div>
+<div class="card">Learning</div>
 
 </div>
 
-<ul id="categoryList"></ul>
-
 </section>
-
-
-<!-- REFLECTION -->
 
 <section id="reflectionPage" class="page">
 
 <h2>Reflection</h2>
 
-<textarea id="reflectionText" placeholder="Write your thoughts..."></textarea>
+<textarea id="journal"></textarea>
 
-<button id="saveReflection" class="gradient-btn">
-Save Reflection
-</button>
-
-<div id="reflectionHistory"></div>
+<button id="saveReflection">Save</button>
 
 </section>
-
 
 </main>
 
@@ -231,13 +155,6 @@ Save Reflection
 
 </div>
 
-
-<script src="storage.js"></script>
-<script src="tasks.js"></script>
-<script src="habits.js"></script>
-<script src="goals.js"></script>
-<script src="ai.js"></script>
-<script src="dashboard.js"></script>
 <script src="app.js"></script>
 
 </body>
