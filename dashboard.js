@@ -1,48 +1,51 @@
-const Dashboard={
+const Dashboard = {
 
 render(){
 
-const tasks=Storage.get("tasks")
-const habits=Storage.get("habits")
-const goals=Storage.get("goals")
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const habits = JSON.parse(localStorage.getItem("habits")) || [];
+const goals = JSON.parse(localStorage.getItem("goals")) || [];
 
-const totalTasks=tasks.length
-const completed=tasks.filter(t=>t.completed).length
+const totalTasks = tasks.length;
+const completedTasks = tasks.filter(t => t.done).length;
+const activeHabits = habits.length;
+const goalCount = goals.length;
 
-let habitRate=0
+let completionRate = 0;
 
-habits.forEach(h=>{
-habitRate+=h.streak
-})
+if(totalTasks > 0){
+completionRate = Math.round((completedTasks / totalTasks) * 100);
+}
 
-const cards=document.getElementById("dashboard-cards")
+/* UPDATE DASHBOARD NUMBERS */
 
-cards.innerHTML=`
+const totalTasksEl = document.getElementById("totalTasks");
+const completedTasksEl = document.getElementById("completedTasks");
+const activeHabitsEl = document.getElementById("activeHabits");
+const goalCountEl = document.getElementById("goalCount");
 
-<div class="dashboard-card">
-<h3>${totalTasks}</h3>
-<p>Total Tasks</p>
-</div>
+if(totalTasksEl) totalTasksEl.innerText = totalTasks;
+if(completedTasksEl) completedTasksEl.innerText = completedTasks;
+if(activeHabitsEl) activeHabitsEl.innerText = activeHabits;
+if(goalCountEl) goalCountEl.innerText = goalCount;
 
-<div class="dashboard-card">
-<h3>${completed}</h3>
-<p>Completed</p>
-</div>
+/* UPDATE PROGRESS CIRCLE */
 
-<div class="dashboard-card">
-<h3>${habits.length}</h3>
-<p>Active Habits</p>
-</div>
+const circle = document.querySelector(".circle");
 
-<div class="dashboard-card">
-<h3>${goals.length}</h3>
-<p>Goals</p>
-</div>
+if(circle){
 
-`
+circle.style.background =
+`conic-gradient(#6366F1 ${completionRate}%, #1F2937 0)`;
 
-AI.render()
+const percent = circle.querySelector(".percent");
 
+if(percent){
+percent.innerText = completionRate + "%";
 }
 
 }
+
+}
+
+};
