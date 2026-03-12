@@ -63,12 +63,12 @@ position:fixed;
 left:220px;
 right:0;
 top:0;
-height:70px;
+height:72px;
 background:#0f1522;
 display:flex;
 align-items:center;
 padding:0 25px;
-box-shadow:0 3px 15px rgba(0,0,0,0.5);
+box-shadow:0 3px 20px rgba(0,0,0,0.6);
 transition:left .3s ease;
 }
 
@@ -76,35 +76,39 @@ transition:left .3s ease;
 left:0;
 }
 
+/* MENU BUTTON */
+
 .menu-btn{
+display:flex;
+align-items:center;
+justify-content:center;
 background:#3a66e0;
 border:none;
 color:white;
-font-size:20px;
-width:42px;
-height:42px;
+font-size:22px;
+width:44px;
+height:44px;
 border-radius:10px;
 cursor:pointer;
 margin-right:15px;
-}
-
-.menu-btn:hover{
-background:#4c7cff;
+padding:0;
 }
 
 /* TITLE FONT */
 
 .topbar h1{
-font-family:'Sora',sans-serif;
-font-weight:600;
-font-size:24px;
+font-family:'Pacifico',cursive;
+font-size:34px;
+font-weight:400;
+letter-spacing:1px;
+margin:0;
 }
 
 /* CONTENT */
 
 .content{
 margin-left:220px;
-margin-top:70px;
+margin-top:72px;
 padding:35px;
 width:100%;
 transition:margin-left .3s ease;
