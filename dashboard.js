@@ -8,44 +8,35 @@ const goals = JSON.parse(localStorage.getItem("goals")) || [];
 
 const totalTasks = tasks.length;
 const completedTasks = tasks.filter(t => t.done).length;
-const activeHabits = habits.length;
-const goalCount = goals.length;
 
-let completionRate = 0;
+let percent = 0;
 
 if(totalTasks > 0){
-completionRate = Math.round((completedTasks / totalTasks) * 100);
+percent = Math.round((completedTasks / totalTasks) * 100);
 }
 
-/* UPDATE DASHBOARD NUMBERS */
+/* UPDATE STATS */
 
-const totalTasksEl = document.getElementById("totalTasks");
-const completedTasksEl = document.getElementById("completedTasks");
-const activeHabitsEl = document.getElementById("activeHabits");
-const goalCountEl = document.getElementById("goalCount");
-
-if(totalTasksEl) totalTasksEl.innerText = totalTasks;
-if(completedTasksEl) completedTasksEl.innerText = completedTasks;
-if(activeHabitsEl) activeHabitsEl.innerText = activeHabits;
-if(goalCountEl) goalCountEl.innerText = goalCount;
+document.getElementById("totalTasks").innerText = totalTasks;
+document.getElementById("completedTasks").innerText = completedTasks;
+document.getElementById("activeHabits").innerText = habits.length;
+document.getElementById("goalCount").innerText = goals.length;
 
 /* UPDATE PROGRESS CIRCLE */
 
 const circle = document.querySelector(".circle");
 
-if(circle){
-
 circle.style.background =
-`conic-gradient(#6366F1 ${completionRate}%, #1F2937 0)`;
+`conic-gradient(#6366F1 ${percent}%, #1F2937 0)`;
 
-const percent = circle.querySelector(".percent");
-
-if(percent){
-percent.innerText = completionRate + "%";
-}
-
-}
+document.querySelector(".percent").innerText = percent + "%";
 
 }
 
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+
+Dashboard.render();
+
+});
