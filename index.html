@@ -4,8 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Villasistent</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Villasistent</title>
 
 <link rel="stylesheet" href="styles.css">
 
@@ -15,47 +16,78 @@
 
 <body>
 
-<div class="app-container">
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="logo">
+Villasistent
+</div>
+
+<nav>
+
+<button data-page="dashboardPage">🏠 Dashboard</button>
+<button data-page="tasksPage">📋 Tasks</button>
+<button data-page="habitsPage">🔥 Habits</button>
+<button data-page="goalsPage">🎯 Goals</button>
+<button data-page="categoriesPage">📂 Categories</button>
+<button data-page="reflectionPage">🧠 Reflection</button>
+
+</nav>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="content">
 
 <header class="topbar">
 
-<div class="greeting">
-<h1>Good morning</h1>
-<h2>Villasistent</h2>
-</div>
+<button id="menuToggle" class="menu-btn">☰</button>
 
-<div class="avatar"></div>
+<h1 class="title">Villasistent</h1>
 
 </header>
 
-<main class="main-content">
 
-<section id="dashboard" class="screen active">
+<main class="pages">
 
-<div class="card progress-card">
+<!-- DASHBOARD -->
 
-<div class="progress-circle">
+<section id="dashboardPage" class="page active">
 
-<div class="progress-value">76%</div>
+<h2>Dashboard</h2>
+
+<div class="dashboard-grid">
+
+<div class="card">
+
+<h3 id="totalTasks">0</h3>
+<p>Total Tasks</p>
 
 </div>
 
-<div class="progress-stats">
+<div class="card">
 
-<div>
-<h3>4</h3>
-<p>Tasks Done</p>
+<h3 id="completedTasks">0</h3>
+<p>Completed</p>
+
 </div>
 
-<div>
-<h3>12</h3>
-<p>Day Streak</p>
+<div class="card">
+
+<h3 id="activeHabits">0</h3>
+<p>Active Habits</p>
+
 </div>
 
-<div>
-<h3>2</h3>
+<div class="card">
+
+<h3 id="goalCount">0</h3>
 <p>Goals</p>
-</div>
 
 </div>
 
@@ -65,119 +97,140 @@
 
 <h3>Villasistent AI</h3>
 
-<p>Focus on deep work for the next 2 hours to boost productivity.</p>
-
-</div>
-
-<div class="today-grid">
-
-<div class="card small-card">
-<h4>Tasks</h4>
-<span>8</span>
-</div>
-
-<div class="card small-card">
-<h4>Habits</h4>
-<span>5</span>
-</div>
+<p id="aiSuggestion">Everything looks balanced. Keep executing.</p>
 
 </div>
 
 </section>
 
-<section id="tasks" class="screen">
+
+<!-- TASKS -->
+
+<section id="tasksPage" class="page">
 
 <h2>Tasks</h2>
 
 <div class="tabs">
-<div class="tab active">Today</div>
-<div class="tab">Upcoming</div>
-<div class="tab">Completed</div>
+
+<button class="tab active">Today</button>
+<button class="tab">Upcoming</button>
+<button class="tab">Completed</button>
+
 </div>
 
-<div id="taskList"></div>
+<div class="card task-create">
 
-<button class="gradient-btn">+ Add Task</button>
+<input id="taskTitle" placeholder="Task title">
+
+<select id="taskPriority">
+
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+
+</select>
+
+<input id="taskDeadline" type="date">
+
+<button id="addTask" class="gradient-btn">
+Add Task
+</button>
+
+</div>
+
+<ul id="taskList"></ul>
 
 </section>
 
-<section id="habits" class="screen">
+
+<!-- HABITS -->
+
+<section id="habitsPage" class="page">
 
 <h2>Habits</h2>
 
-<div class="streak">🔥 12 day streak</div>
+<div class="card habit-create">
 
-<div class="habit-week">
+<input id="habitTitle" placeholder="Habit name">
 
-<div class="day active"></div>
-<div class="day active"></div>
-<div class="day active"></div>
-<div class="day"></div>
-<div class="day"></div>
-<div class="day"></div>
-<div class="day"></div>
+<button id="addHabit" class="gradient-btn">
+Add Habit
+</button>
 
 </div>
 
-<div id="habitList"></div>
+<ul id="habitList"></ul>
 
 </section>
 
-<section id="goals" class="screen">
+
+<!-- GOALS -->
+
+<section id="goalsPage" class="page">
 
 <h2>Goals</h2>
+
+<div class="card goal-create">
+
+<input id="goalTitle" placeholder="Goal title">
+
+<textarea id="goalDesc" placeholder="Description"></textarea>
+
+<button id="addGoal" class="gradient-btn">
+Add Goal
+</button>
+
+</div>
 
 <div id="goalList"></div>
 
 </section>
 
-<section id="categories" class="screen">
+
+<!-- CATEGORIES -->
+
+<section id="categoriesPage" class="page">
 
 <h2>Categories</h2>
 
-<div class="category-grid">
+<div class="card">
 
-<div class="card">Work</div>
-<div class="card">Health</div>
-<div class="card">Personal</div>
-<div class="card">Learning</div>
+<input id="newCategory" placeholder="New category">
+
+<button id="addCategory" class="gradient-btn">
+Add
+</button>
 
 </div>
 
+<ul id="categoryList"></ul>
+
 </section>
 
-<section id="reflection" class="screen">
+
+<!-- REFLECTION -->
+
+<section id="reflectionPage" class="page">
 
 <h2>Reflection</h2>
 
-<div class="mood-row">
+<textarea id="reflectionText" placeholder="Write your thoughts..."></textarea>
 
-<div class="mood">🙂</div>
-<div class="mood">😐</div>
-<div class="mood">😔</div>
-<div class="mood">😡</div>
+<button id="saveReflection" class="gradient-btn">
+Save Reflection
+</button>
 
-</div>
-
-<textarea placeholder="Write your thoughts..."></textarea>
-
-<button class="gradient-btn">Submit</button>
+<div id="reflectionHistory"></div>
 
 </section>
 
+
 </main>
 
-<nav class="bottom-nav">
-
-<button data-tab="dashboard">🏠</button>
-<button data-tab="tasks">📋</button>
-<button data-tab="habits">🔥</button>
-<button data-tab="goals">🎯</button>
-<button data-tab="reflection">🧠</button>
-
-</nav>
+</div>
 
 </div>
+
 
 <script src="storage.js"></script>
 <script src="tasks.js"></script>
