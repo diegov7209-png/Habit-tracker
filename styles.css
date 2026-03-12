@@ -1,10 +1,8 @@
 body{
-
 margin:0;
-font-family:Inter,sans-serif;
+font-family:Inter;
 background:#0B0F1A;
 color:white;
-
 }
 
 .app{
@@ -14,91 +12,45 @@ display:flex;
 /* SIDEBAR */
 
 .sidebar{
-
 width:220px;
-background:#0F1624;
+background:#111827;
 height:100vh;
 padding:20px;
-position:fixed;
 transition:.3s;
-
-}
-
-.sidebar.collapsed{
-width:70px;
-}
-
-.logo{
-
-font-size:20px;
-font-weight:600;
-margin-bottom:30px;
-
 }
 
 .sidebar button{
-
 display:block;
 width:100%;
 background:none;
 border:none;
 color:white;
 padding:12px;
-text-align:left;
 border-radius:12px;
-margin-bottom:10px;
-cursor:pointer;
-
+margin-bottom:8px;
 }
 
 .sidebar button:hover{
-background:rgba(255,255,255,0.05);
+background:rgba(255,255,255,.05);
 }
 
-/* CONTENT */
+/* MAIN */
 
-.content{
-
-margin-left:220px;
-width:100%;
-transition:.3s;
-
+.main{
+flex:1;
 }
-
-.sidebar.collapsed + .content{
-margin-left:70px;
-}
-
-/* TOPBAR */
 
 .topbar{
-
 display:flex;
 align-items:center;
 padding:20px;
-
 }
 
-.menu-btn{
-
-background:#1F2937;
-border:none;
-color:white;
-padding:10px;
-border-radius:8px;
-margin-right:20px;
-
-}
-
-.title{
-font-size:24px;
-}
-
-/* PAGES */
+/* PAGE */
 
 .page{
 display:none;
-padding:20px;
+padding:30px;
 }
 
 .page.active{
@@ -108,76 +60,61 @@ display:block;
 /* CARDS */
 
 .card{
-
-background:rgba(255,255,255,0.04);
-border-radius:18px;
+background:linear-gradient(180deg,#1F2937,#111827);
+border-radius:20px;
 padding:20px;
 margin-bottom:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-
+box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 
-/* GRID */
+/* CIRCLE */
 
-.dashboard-grid{
-
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-
+.circle{
+width:160px;
+height:160px;
+border-radius:50%;
+background:conic-gradient(#6366F1 76%,#1F2937 0);
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-/* BUTTON */
+.percent{
+font-size:32px;
+}
 
-.gradient-btn{
+/* TASKS */
 
-background:linear-gradient(135deg,#3B82F6,#8B5CF6);
+.task-input{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+#addTask{
+background:linear-gradient(135deg,#6366F1,#8B5CF6);
 border:none;
-padding:12px 18px;
-border-radius:14px;
+padding:10px 16px;
+border-radius:12px;
 color:white;
-cursor:pointer;
-
-}
-
-/* INPUTS */
-
-input,textarea,select{
-
-width:100%;
-padding:10px;
-margin-bottom:10px;
-border-radius:10px;
-border:none;
-background:#121826;
-color:white;
-
-}
-
-textarea{
-min-height:120px;
 }
 
 /* TABS */
 
 .tabs{
-
 display:flex;
 gap:10px;
 margin-bottom:20px;
-
 }
 
 .tab{
-
-padding:8px 14px;
-background:#121826;
+padding:8px 16px;
+border-radius:12px;
+background:#1F2937;
 border:none;
 color:white;
-border-radius:10px;
-
 }
 
 .tab.active{
-background:linear-gradient(135deg,#3B82F6,#8B5CF6);
+background:linear-gradient(135deg,#6366F1,#8B5CF6);
 }
