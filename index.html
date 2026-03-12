@@ -18,15 +18,11 @@
 
 <div class="app">
 
-<!-- SIDEBAR -->
-
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
 
 <div class="logo">
 Villasistent
 </div>
-
-<nav>
 
 <button data-page="dashboardPage">🏠 Dashboard</button>
 <button data-page="tasksPage">📋 Tasks</button>
@@ -35,30 +31,63 @@ Villasistent
 <button data-page="categoriesPage">📂 Categories</button>
 <button data-page="reflectionPage">🧠 Reflection</button>
 
-</nav>
-
 </aside>
-
-<!-- MAIN -->
 
 <div class="main">
 
 <header class="topbar">
 
-<button id="toggleSidebar">☰</button>
 <h1>Villasistent</h1>
 
 </header>
 
 <main>
 
+<!-- DASHBOARD -->
+
 <section id="dashboardPage" class="page active">
+
+<div class="dashboard-grid">
 
 <div class="card progress-card">
 
 <div class="circle">
 
-<div class="percent">76%</div>
+<div class="percent">0%</div>
+
+</div>
+
+</div>
+
+<div class="card stats">
+
+<div class="stat">
+
+<h2 id="totalTasks">0</h2>
+<p>Total Tasks</p>
+
+</div>
+
+<div class="stat">
+
+<h2 id="completedTasks">0</h2>
+<p>Completed</p>
+
+</div>
+
+<div class="stat">
+
+<h2 id="activeHabits">0</h2>
+<p>Habits</p>
+
+</div>
+
+<div class="stat">
+
+<h2 id="goalCount">0</h2>
+<p>Goals</p>
+
+</div>
 
 </div>
 
@@ -68,84 +97,25 @@ Villasistent
 
 <h3>AI Suggestion</h3>
 
-<p>Focus on deep work for 2 hours.</p>
+<p id="aiSuggestion">
+Focus on deep work for 2 hours.
+</p>
 
 </div>
 
 </section>
+
+<!-- TASKS -->
 
 <section id="tasksPage" class="page">
 
 <h2>Tasks</h2>
 
-<div class="tabs">
-
-<button class="tab active" data-filter="today">Today</button>
-<button class="tab" data-filter="upcoming">Upcoming</button>
-<button class="tab" data-filter="completed">Completed</button>
-
-</div>
-
-<div class="task-input">
-
 <input id="taskInput" placeholder="New task">
-
-<select id="taskPriority">
-<option value="low">Low</option>
-<option value="medium">Medium</option>
-<option value="high">High</option>
-</select>
 
 <button id="addTask">Add Task</button>
 
-</div>
-
 <ul id="taskList"></ul>
-
-</section>
-
-<section id="habitsPage" class="page">
-
-<h2>Habits</h2>
-
-<input id="habitInput" placeholder="New habit">
-
-<button id="addHabit">Add Habit</button>
-
-<ul id="habitList"></ul>
-
-</section>
-
-<section id="goalsPage" class="page">
-
-<h2>Goals</h2>
-
-<div id="goalList"></div>
-
-</section>
-
-<section id="categoriesPage" class="page">
-
-<h2>Categories</h2>
-
-<div class="category-grid">
-
-<div class="card">Work</div>
-<div class="card">Health</div>
-<div class="card">Personal</div>
-<div class="card">Learning</div>
-
-</div>
-
-</section>
-
-<section id="reflectionPage" class="page">
-
-<h2>Reflection</h2>
-
-<textarea id="journal"></textarea>
-
-<button id="saveReflection">Save</button>
 
 </section>
 
@@ -155,6 +125,8 @@ Villasistent
 
 </div>
 
+<script src="tasks.js"></script>
+<script src="dashboard.js"></script>
 <script src="app.js"></script>
 
 </body>
