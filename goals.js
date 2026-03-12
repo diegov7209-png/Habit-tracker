@@ -1,113 +1,60 @@
-const Goals={
+let goals = JSON.parse(localStorage.getItem("goals")) || [];
 
-init(){
+const goalInput = document.getElementById("goalInput");
+const addGoalBtn = document.getElementById("addGoal");
+const goalList = document.getElementById("goalList");
 
-document.getElementById("addGoal").onclick=this.addGoal
-this.render()
+function renderGoals(){
 
-},
+goalList.innerHTML="";
 
-addGoal(){
+goals.forEach((goal,i)=>{
 
-const goals=Storage.get("goals")
+const li=document.createElement("li");
 
-goals.push({
+li.innerHTML=`
+${goal.text}
+<button data-delete="${i}">X</button>
+`;
 
-id:Date.now(),
-title:goalTitle.value,
-desc:goalDesc.value,
-milestones:[]
+goalList.appendChild(li);
 
-})
+});
 
-Storage.set("goals",goals)
+localStorage.setItem("goals",JSON.stringify(goals));
 
-Goals.render()
-
-},
-
-addMilestone(id){
-
-const text=prompt("Milestone")
-
-const goals=Storage.get("goals")
-
-goals.forEach(g=>{
-
-if(g.id==id){
-
-g.milestones.push({
-
-title:text,
-done:false
-
-})
-
-}
-
-})
-
-Storage.set("goals",goals)
-
-Goals.render()
-
-},
-
-toggle(id,index){
-
-const goals=Storage.get("goals")
-
-goals.forEach(g=>{
-
-if(g.id==id){
-
-g.milestones[index].done=!g.milestones[index].done
-
-}
-
-})
-
-Storage.set("goals",goals)
-
-Goals.render()
-
-},
-
-render(){
-
-const div=document.getElementById("goalList")
-div.innerHTML=""
-
-const goals=Storage.get("goals")
-
-goals.forEach(g=>{
-
-let html=`
-<div class="card">
-<h3>${g.title}</h3>
-<p>${g.desc}</p>
-<button onclick="Goals.addMilestone(${g.id})">Add Milestone</button>
-`
-
-g.milestones.forEach((m,i)=>{
-
-html+=`
-<div>
-<input type="checkbox"
-${m.done?"checked":""}
-onclick="Goals.toggle(${g.id},${i})">
-${m.title}
-</div>
-`
-
-})
-
-html+=`</div>`
-
-div.innerHTML+=html
-
-})
-
+if(typeof Dashboard !== "undefined"){
+Dashboard.render();
 }
 
 }
+
+addGoalBtn.onclick=()=>{
+
+const text=goalInput.value.trim();
+
+if(!text)return;
+
+goals.push({text});
+
+goalInput.value="";
+
+renderGoals();
+
+};
+
+goalList.onclick=(e)=>{
+
+const id=e.target.dataset.delete;
+
+if(id!==undefined){
+
+goals.splice(id,1);
+
+renderGoals();
+
+}
+
+};
+
+renderGoals();
