@@ -1,8 +1,13 @@
+/* LOAD TASKS */
+
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTask");
 const taskList = document.getElementById("taskList");
+
+
+/* RENDER TASKS */
 
 function renderTasks(){
 
@@ -26,13 +31,22 @@ taskList.appendChild(li);
 
 });
 
+/* SAVE LOCAL */
+
 localStorage.setItem("tasks", JSON.stringify(tasks));
+
+/* UPDATE DASHBOARD */
 
 if(typeof Dashboard !== "undefined"){
 Dashboard.render();
 }
 
+/* SYNC CLOUD */
+
+syncTasks();
+
 }
+
 
 /* ADD TASK */
 
@@ -45,8 +59,10 @@ const text = taskInput.value.trim();
 if(!text) return;
 
 tasks.push({
-text,
-done:false
+
+text: text,
+done: false
+
 });
 
 taskInput.value = "";
@@ -56,6 +72,7 @@ renderTasks();
 };
 
 }
+
 
 /* TASK CLICK EVENTS */
 
@@ -85,5 +102,34 @@ renderTasks();
 };
 
 }
+
+
+/* CLOUD SYNC */
+
+async function syncTasks(){
+
+if(typeof db === "undefined") return;
+if(!currentUser) return;
+
+try{
+
+await db.collection("users")
+.doc(currentUser.uid)
+.update({
+
+tasks: tasks
+
+});
+
+}catch(e){
+
+console.log("Cloud sync skipped");
+
+}
+
+}
+
+
+/* INITIAL RENDER */
 
 renderTasks();
