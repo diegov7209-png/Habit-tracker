@@ -1,80 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-const pages = document.querySelectorAll(".page")
-const navButtons = document.querySelectorAll(".sidebar button")
+/* SIDEBAR NAVIGATION */
+
+const pages = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll(".sidebar button");
 
 navButtons.forEach(btn => {
 
 btn.onclick = () => {
 
-pages.forEach(p => p.classList.remove("active"))
+pages.forEach(p => p.classList.remove("active"));
 
-const target = document.getElementById(btn.dataset.page)
+const target = document.getElementById(btn.dataset.page);
 
-target.classList.add("active")
+if(target){
+target.classList.add("active");
+}
+
+};
+
+});
+
+/* SIDEBAR COLLAPSE */
+
+const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("toggleSidebar");
+
+if(toggle){
+
+toggle.onclick = () => {
+
+sidebar.classList.toggle("collapsed");
+
+};
 
 }
 
-})
+/* LOAD DASHBOARD */
 
-/* TASKS */
-
-let tasks = JSON.parse(localStorage.getItem("tasks")) || []
-
-const taskInput = document.getElementById("taskInput")
-const addTaskBtn = document.getElementById("addTask")
-const taskList = document.getElementById("taskList")
-
-function renderTasks(){
-
-taskList.innerHTML=""
-
-tasks.forEach((task,i)=>{
-
-const li=document.createElement("li")
-
-li.innerHTML=`
-<input type="checkbox" ${task.done ? "checked":""}>
-<span>${task.text}</span>
-<button data-id="${i}">x</button>
-`
-
-taskList.appendChild(li)
-
-})
-
-localStorage.setItem("tasks",JSON.stringify(tasks))
-
+if(typeof Dashboard !== "undefined"){
+Dashboard.render();
 }
 
-addTaskBtn.onclick=()=>{
-
-const text=taskInput.value.trim()
-
-if(!text)return
-
-tasks.push({text,done:false})
-
-taskInput.value=""
-
-renderTasks()
-
-}
-
-taskList.onclick=(e)=>{
-
-const id=e.target.dataset.id
-
-if(id){
-
-tasks.splice(id,1)
-
-renderTasks()
-
-}
-
-}
-
-renderTasks()
-
-})
+});
