@@ -12,9 +12,29 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 </head>
 
 <body>
+
+<!-- LOGIN SCREEN -->
+
+<div id="loginScreen">
+
+<h1>Villasistent</h1>
+
+<button id="googleLogin">
+Continue with Google
+</button>
+
+</div>
+
+<!-- APP -->
+
+<div id="app" style="display:none">
 
 <div class="app">
 
@@ -31,6 +51,8 @@ Villasistent
 <button data-page="categoriesPage">📂 Categories</button>
 <button data-page="reflectionPage">🧠 Reflection</button>
 
+<button id="logoutBtn">Logout</button>
+
 </aside>
 
 <div class="main">
@@ -42,8 +64,6 @@ Villasistent
 </header>
 
 <main>
-
-<!-- DASHBOARD -->
 
 <section id="dashboardPage" class="page active">
 
@@ -94,9 +114,6 @@ Focus on deep work for 2 hours.
 
 </section>
 
-
-<!-- TASKS -->
-
 <section id="tasksPage" class="page">
 
 <h2>Tasks</h2>
@@ -107,9 +124,6 @@ Focus on deep work for 2 hours.
 <ul id="taskList"></ul>
 
 </section>
-
-
-<!-- HABITS -->
 
 <section id="habitsPage" class="page">
 
@@ -122,9 +136,6 @@ Focus on deep work for 2 hours.
 
 </section>
 
-
-<!-- GOALS -->
-
 <section id="goalsPage" class="page">
 
 <h2>Goals</h2>
@@ -135,9 +146,6 @@ Focus on deep work for 2 hours.
 <ul id="goalList"></ul>
 
 </section>
-
-
-<!-- CATEGORIES -->
 
 <section id="categoriesPage" class="page">
 
@@ -150,14 +158,11 @@ Focus on deep work for 2 hours.
 
 </section>
 
-
-<!-- REFLECTION -->
-
 <section id="reflectionPage" class="page">
 
 <h2>Reflection</h2>
 
-<textarea id="reflectionText" placeholder="Write your thoughts..."></textarea>
+<textarea id="reflectionText"></textarea>
 
 <button id="saveReflection">
 Save Reflection
@@ -173,6 +178,9 @@ Save Reflection
 
 </div>
 
+</div>
+
+<script src="firebase.js"></script>
 <script src="tasks.js"></script>
 <script src="habits.js"></script>
 <script src="goals.js"></script>
